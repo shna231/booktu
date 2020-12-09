@@ -12,7 +12,13 @@ $search_word=isset($_POST['search_word']) ? $_POST['search_word'] : '';
 
 $sql="SELECT * from booktu.report";
 
+echo $rBookName
 var_dump($rBookName);
 
+if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=="") {
+	$sql=$sql." WHERE";
+}
+
+echo $sql
 
 ?>

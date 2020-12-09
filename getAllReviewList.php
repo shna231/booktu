@@ -35,20 +35,38 @@ if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=
     if(!$rBookName=="" || !$rBookWriter==""){
       $sql=$sql." AND";
     }
-    $sql=$sql.$rBookWriter.'$search_word';
+    $sql=$sql.$rReviewName.'$search_word';
   }
   
    // 네번째 옵션이 체크
-  if(!$rReviewName==""){
+  if(!$rReviewWriter==""){
     // 앞 옵션 중 하나라도 있었다면 AND 추가 후 붙임
     if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName==""){
       $sql=$sql." AND";
     }
-    $sql=$sql.$rBookWriter.'$search_word';
+    $sql=$sql.$rReviewWriter.'$search_word';
   }
 
+$stmt=$con->prepare($sql);
+$stmt->execute();
+ 
+if ($stmt->rowCount() == 0){
+    echo "독후감이 존재하지 않습니다";
+	
+} else{
 
-echo $sql;
+   	$data=array(); 
+	// extract($row);
+
+	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+        	array_push($data,array('book_image'=>$row["book_image"],
+        			'title'=>$row["title"],
+				'content'=>$row["content"]));
+	}
+	
+	header('Content-Type: application/json; charset=utf8');
+	echo json_encode(array("data"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+    } 
 
 
 ?>

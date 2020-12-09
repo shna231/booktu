@@ -17,5 +17,22 @@ $stmt->execute();
 
 $data=array(); 
 // extract($row);
+ 
+if ($stmt->rowCount() == 0){
+	echo "no comments";
+	
+} else{
+	
+	        while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
+        	        array_push($data,array('comment_num'=>$row["comment_num"],
+        			                        'article_num'=>$row["article_num"],
+				                              'writer_id'=>$row["writer_id"],
+                                 		  'content'=>$row["content"]));
+        	}
+	
+        	header('Content-Type: application/json; charset=utf8');
+	        echo json_encode(array("data"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+    
+} 
 
 ?>

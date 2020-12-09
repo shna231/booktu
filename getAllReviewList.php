@@ -29,6 +29,24 @@ if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=
     $sql=$sql.$rBookWriter.'$search_word';
   }
 
+   // 세번째 옵션이 체크
+  if(!$rReviewName==""){
+    // 앞 옵션 중 하나라도 있었다면 AND 추가 후 붙임
+    if(!$rBookName=="" || !$rBookWriter==""){
+      $sql=$sql." AND";
+    }
+    $sql=$sql.$rBookWriter.'$search_word';
+  }
+  
+   // 네번째 옵션이 체크
+  if(!$rReviewName==""){
+    // 앞 옵션 중 하나라도 있었다면 AND 추가 후 붙임
+    if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName==""){
+      $sql=$sql." AND";
+    }
+    $sql=$sql.$rBookWriter.'$search_word';
+  }
+
 
 echo $sql;
 

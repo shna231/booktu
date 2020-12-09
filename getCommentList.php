@@ -4,8 +4,6 @@ ini_set('display_errors',1);
 
 include('dbcon.php');
 
-echo "yaho";
-
 //POST 값을 읽어온다.
 $article_num=isset($_POST['article_num']) ? $_POST['article_num'] : '';
 

@@ -17,7 +17,7 @@ $data=array();
 // extract($row);
  
 if ($stmt->rowCount() == 0){
-	echo '없습니다.'
+	echo "dodo";
         	array_push($data,array('comment_num'=>-1,
         			                   'article_num'=>$article_num,
 				                   'writer_id'=>"NONE",

@@ -14,7 +14,7 @@ $sql="SELECT * from booktu.report";
 
 var_dump($rBookName);
 
-if($rBookName==1 | $rBookWriter==1 | $rReviewName==1 | $rReviewWriter==1) {
+if($rBookName==1 || $rBookWriter==1 || $rReviewName==1 || $rReviewWriter==1) {
 	$sql=$sql." WHERE";
 }
 
@@ -28,13 +28,13 @@ if($rBookWriter==1) {
 	$sql=$sql." book_author='$search_word'";
 }
 if($rReviewName==1) {
-	if($rBookName==1 | $rBookWriter==1){
+	if($rBookName==1 || $rBookWriter==1){
 		$sql=$sql." AND";
 	}
 	$sql= $sql." title='$search_word'";
 }
 if($rReviewWriter==1) {
-	if($rBookName==1 | $rBookWriter==1 | $rReviewName==1) {
+	if($rBookName==1 || $rBookWriter==1 || $rReviewName==1) {
 		$sql=$sql." AND"
 	}
 	$sql= $sql." writer_id='$search_word'";

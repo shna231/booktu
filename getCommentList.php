@@ -12,24 +12,29 @@ $sql="select * from booktu.comment where article_num='$article_num'";
 
 $stmt=$con->prepare($sql);
 $stmt->execute();
+
+$data=array(); 
+// extract($row);
  
 if ($stmt->rowCount() == 0){
-    echo "댓글이 존재하지 않습니다";
-	
+            	array_push($data,array('-1'=>$row["comment_num"],
+        			                   $article_num=>$row["article_num"],
+				                   'none'=>$row["writer_id"],
+                                 		   '댓글이 없습니다. 첫 댓글을 남겨주세요.'=>$row["content"]));	
 } else{
 
-   	$data=array(); 
-	// extract($row);
+
 
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         	array_push($data,array('comment_num'=>$row["comment_num"],
         			                   'article_num'=>$row["article_num"],
-				                         'writer_id'=>$row["writer_id"],
-                                 'content'=>$row["content"]));
+				                   'writer_id'=>$row["writer_id"],
+                                 		   'content'=>$row["content"]));
 	}
 	
+    } 
+
 	header('Content-Type: application/json; charset=utf8');
 	echo json_encode(array("data"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
-    } 
 
 ?>

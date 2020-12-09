@@ -11,7 +11,10 @@ $rReviewWriter=isset($_POST['rReviewWriter']) ? $_POST['rReviewWriter'] : '';
 $search_word=isset($_POST['search_word']) ? $_POST['search_word'] : '';
 
 $sql="SELECT * from booktu.report";
-$sql=$sql.$rBookName;
+if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=="") {
+  $sql=$sql.$rBookName.$rBookWriter.$rReviewName.$rReviewWriter;
+}
+ 
 echo $sql;
 
 

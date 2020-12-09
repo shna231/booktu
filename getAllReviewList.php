@@ -17,7 +17,7 @@ if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=
  
 // 첫 옵션이 체크 > AND 없이 붙임
   if(!$rBookName==""){
-    $sql=$sql.$rBookName.'$search_word';
+    $sql=$sql.$rBookName."'$search_word'";
   }
   
   // 두번째 옵션이 체크
@@ -26,7 +26,7 @@ if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=
     if(!$rBookName==""){
       $sql=$sql." AND";
     }
-    $sql=$sql.$rBookWriter.'$search_word';
+    $sql=$sql.$rBookWriter."'$search_word'";
   }
 
    // 세번째 옵션이 체크
@@ -35,7 +35,7 @@ if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=
     if(!$rBookName=="" || !$rBookWriter==""){
       $sql=$sql." AND";
     }
-    $sql=$sql.$rReviewName.'$search_word';
+    $sql=$sql.$rReviewName."'$search_word'";
   }
   
    // 네번째 옵션이 체크
@@ -44,7 +44,7 @@ if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=
     if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName==""){
       $sql=$sql." AND";
     }
-    $sql=$sql.$rReviewWriter.'$search_word';
+    $sql=$sql.$rReviewWriter."'$search_word'";
   }
 
 $stmt=$con->prepare($sql);

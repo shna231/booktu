@@ -13,8 +13,9 @@ $search_word=isset($_POST['search_word']) ? $_POST['search_word'] : '';
 $sql="SELECT * from booktu.report";
 if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=="") {
   $sql=$sql." WHERE";
-  
-  // 첫 옵션이 체크 > AND 없이 붙임
+}
+ 
+// 첫 옵션이 체크 > AND 없이 붙임
   if(!$rBookName==""){
     $sql=$sql.$rBookName.'$search_word';
   }
@@ -45,9 +46,7 @@ if(!$rBookName=="" || !$rBookWriter=="" || !$rReviewName=="" || !$rReviewWriter=
     }
     $sql=$sql.$rBookWriter.'$search_word';
   }
-  
-}
- 
+
 echo $sql;
 
 

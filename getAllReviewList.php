@@ -11,7 +11,7 @@ $rReviewWriter=isset($_POST['rReviewWriter']) ? $_POST['rReviewWriter'] : '';
 $search_word=isset($_POST['search_word']) ? $_POST['search_word'] : '';
 
 $sql="SELECT * from booktu.report";
-var_dump($rBookName);
+echo $rBookName;
 
 
 ?>

@@ -17,14 +17,12 @@ $data=array();
 // extract($row);
  
 if ($stmt->rowCount() == 0){
-            	array_push($data,array('-1'=>$row["comment_num"],
-        			                   $article_num=>$row["article_num"],
-				                   'none'=>$row["writer_id"],
-                                 		   '댓글이 없습니다. 첫 댓글을 남겨주세요.'=>$row["content"]));	
+        	array_push($data,array('comment_num'=>-1,
+        			                   'article_num'=>$article_num,
+				                   'writer_id'=>"NONE",
+                                 		   'content'=>"댓글이 존재하지 않습니다. 첫번째 댓글을 남겨주세요!"));
 } else{
-
-
-
+	
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         	array_push($data,array('comment_num'=>$row["comment_num"],
         			                   'article_num'=>$row["article_num"],

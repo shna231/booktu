@@ -17,25 +17,25 @@ if($rBookName | $rBookWriter | $rReviewName | $rReviewWriter) {
 }
 
 if($rBookName) {
-	$sql=$sql." book_title='$search_word'"
+	$sql=$sql." book_title='$search_word'";
 }
 if($rBookWriter) {
 	if($rBookName){
-		$sql=$sql." AND"
+		$sql=$sql." AND";
 	}
-	$sql=$sql." book_author='$search_word'"
+	$sql=$sql." book_author='$search_word'";
 }
 if($rReviewName) {
 	if($rBookName | $rBookWriter){
-		$sql=$sql." AND"
+		$sql=$sql." AND";
 	}
-	$sql= $sql." title='$search_word'"
+	$sql= $sql." title='$search_word'";
 }
 if($rReviewWriter) {
 	if($rBookName | $rBookWriter | $rReviewName) {
 		$sql=$sql." AND"
 	}
-	$sql= $sql." writer_id='$search_word'"
+	$sql= $sql." writer_id='$search_word'";
 }
 
 

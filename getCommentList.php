@@ -17,11 +17,8 @@ $data=array();
 // extract($row);
  
 if ($stmt->rowCount() == 0){
-	echo "dodo";
-        	array_push($data,array('comment_num'=>-1,
-        			                   'article_num'=>$article_num,
-				                   'writer_id'=>"NONE",
-                                 		   'content'=>"댓글이 존재하지 않습니다. 첫번째 댓글을 남겨주세요!"));
+	echo "no comments";
+	
 } else{
 	
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
@@ -31,9 +28,10 @@ if ($stmt->rowCount() == 0){
                                  		   'content'=>$row["content"]));
 	}
 	
-    } 
-
 	header('Content-Type: application/json; charset=utf8');
 	echo json_encode(array("data"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+    } 
+
+	
 
 ?>

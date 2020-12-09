@@ -4,7 +4,40 @@ ini_set('display_errors',1);
 
 include('dbcon.php');
 
-$sql="select * from booktu.report";
+$rBookName=isset($_POST['rBookName']) ? $_POST['rBookName'] : '';
+$rBookWriter=isset($_POST['rBookWriter']) ? $_POST['rBookWriter'] : '';
+$rReviewName=isset($_POST['rReviewName']) ? $_POST['rReviewName'] : '';
+$rReviewWriter=isset($_POST['rReviewWriter']) ? $_POST['rReviewWriter'] : '';
+$search_word=isset($_POST['search_word']) ? $_POST['search_word'] : '';
+
+$sql="SELECT * from booktu.report";
+
+if($rBookName | $rBookWriter | $rReviewName | $rReviewWriter) {
+	$sql=$sql." WHERE";
+}
+
+if($rBookName) {
+	$sql=$sql." book_title='$search_word'"
+}
+if($rBookWriter) {
+	if($rBookName){
+		$sql=$sql." AND"
+	}
+	$sql=$sql." book_author='$search_word'"
+}
+if($rReviewName) {
+	if($rBookName | $rBookWriter){
+		$sql=$sql." AND"
+	}
+	$sql= $sql." title='$search_word'"
+}
+if($rReviewWriter) {
+	if($rBookName | $rBookWriter | $rReviewName) {
+		$sql=$sql." AND"
+	}
+	$sql= $sql." writer_id='$search_word'"
+}
+
 
 $stmt=$con->prepare($sql);
 $stmt->execute();

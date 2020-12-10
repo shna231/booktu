@@ -13,5 +13,5 @@ $sql="INSERT INTO booktu.discussion_topic topic VALUES '$topic')";
 $stmt=$con->prepare($sql);
 $stmt->execute();
 
-echo "sucess"
+echo "sucess";
 ?>

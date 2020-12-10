@@ -11,7 +11,7 @@ $android=strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 $sql1="SELECT liked FROM booktu.discussion_topic WHERE topic_num='$topic_num'";
 $sql1 += 1;
 
-val_dump($sql1);
+echo $sql1;
 
 
 ?>

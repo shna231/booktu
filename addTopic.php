@@ -8,7 +8,7 @@ $topic=isset($_POST['topic']) ? $_POST['topic'] : '';
 
 $android=strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
-$sql="INSERT INTO booktu.discussion_topic topic VALUES '$topic')";
+$sql="INSERT INTO booktu.discussion_topic (topic) VALUES ('$topic')";
 
 $stmt=$con->prepare($sql);
 $stmt->execute();

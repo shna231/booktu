@@ -22,12 +22,12 @@ if ($stmt->rowCount() == 0){
 
 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
        array_push($data,array('topic_num'=>$row["topic_num"],
-        			                'topic'=>$row["topic"],
-			      			            'topic_book'=>$row["topic_book"],
-			                      	'topic_book_image'=>$row["topic_book_image"],
-			     		              	'now'=>$row["now"],
-			     		              	'selected'=>$row["selected"],
-			     			              'liked'=>$row["liked"]));
+        			'topic'=>$row["topic"],
+			      	'topic_book'=>$row["topic_book"],
+			        'topic_book_image'=>$row["topic_book_image"],
+			    	'now'=>$row["now"],
+			    	'selected'=>$row["selected"],
+			     	'liked'=>$row["liked"]));
 	}
 	
 	header('Content-Type: application/json; charset=utf8');

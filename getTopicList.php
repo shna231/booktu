@@ -13,7 +13,6 @@ $stmt->execute();
  
 if ($stmt->rowCount() == 0){
     echo $sql;
-    echo "독후감이 존재하지 않습니다";
 	
 } else{
 

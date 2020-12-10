@@ -13,9 +13,12 @@ $data=array();
 // extract($row);
 
 while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-       array_push($data,array('book_image'=>$row["book_image"],
-        			                'title'=>$row["title"],
-			                      	'content'=>$row["content"]));
+       array_push($data,array('topic_num'=>$row["topic_num"],
+        			                'topic'=>$row["topic"],
+			                      	'topic_image_path'=>$row["topic_image_path"],
+			     			'now'=>$row["now"],
+			     			'selected'=>$row["selected"],
+			     			'liked'=>$row["liked"]));
 	}
 	
 	header('Content-Type: application/json; charset=utf8');

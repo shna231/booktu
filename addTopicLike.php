@@ -8,12 +8,10 @@ $topic_num=isset($_POST['topic_num']) ? $_POST['topic_num'] : '';
 
 $android=strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
-$sql1="SELECT liked FROM booktu.discussion_topic WHERE topic_num='$topic_num'";
+$sql="UPDATE booktu.discussion_topic SET liked = liked+1 WHERE topic_num='$topic_num';";
 
-$stmt=$con->prepare($sql1);
+$stmt=$con->prepare($sql);
 $stmt->execute();
 
-echo $stmt;
-
-
+echo "sucess"
 ?>
